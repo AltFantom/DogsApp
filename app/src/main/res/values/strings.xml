@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dogs</string>
     <string name="next_image">NEXT IMAGE</string>
+    <string name="internetOff">No internet access</string>
 </resources>
