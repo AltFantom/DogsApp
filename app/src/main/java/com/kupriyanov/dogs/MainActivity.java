@@ -20,6 +20,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
+
     private static final String TAG = "MainActivity";
 
     @Override

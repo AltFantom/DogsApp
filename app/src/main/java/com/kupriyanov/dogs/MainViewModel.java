@@ -45,7 +45,7 @@ public class MainViewModel extends AndroidViewModel {
 
     public void loadDogImage() {
         Disposable disposable = loadDogImageRX()
-                .observeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<DogImage>() {
                     @Override
