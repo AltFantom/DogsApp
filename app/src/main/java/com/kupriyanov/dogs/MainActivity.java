@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -43,7 +45,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }while (result != null);
 
-                    Log.d("MainActivity", data.toString());
+                    JSONObject jsonObject = new JSONObject(data.toString());
+                    String message = jsonObject.getString("message");
+                    String status = jsonObject.getString("status");
+                    DogImage dogImage = new DogImage(message, status);
+
+
+                    Log.d("MainActivity", dogImage.toString());
                 } catch (Exception e) {
                     Log.d("MainActivity", e.toString());
                 }
