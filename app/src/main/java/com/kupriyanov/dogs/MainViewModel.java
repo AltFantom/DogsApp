@@ -93,31 +93,7 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     private Single<DogImage> loadDogImageRX() {
-        return Single.fromCallable(new Callable<DogImage>() {
-            @Override
-            public DogImage call() throws Exception {
-                URL url = new URL(BASE_URL);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                InputStream inputStream = urlConnection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                String result;
-                StringBuilder data = new StringBuilder();
-                do {
-                    result = bufferedReader.readLine();
-                    if (result != null) {
-                        data.append(result);
-                    }
-                } while (result != null);
-
-                JSONObject jsonObject = new JSONObject(data.toString());
-                String message = jsonObject.getString(KEY_MESSAGE);
-                String status = jsonObject.getString(KEY_STATUS);
-                DogImage image = new DogImage(message, status);
-                return image;
-            }
-        });
+        return ApiFactory.getApiService().loadDogImage();
     }
 
     @Override
